@@ -11,6 +11,8 @@ const app = Vue.createApp({
       messageTwo: "",
       commentTwo: [],
       comment: [],
+      editIndex:0,
+      edit:false,
  
       data: {
         currentUser: {
@@ -143,24 +145,36 @@ const app = Vue.createApp({
     // },
 
     addCommentTwo() {
-      this.data.currentUser.comments.push(
-        {content:this.messageTwo},
-        // this.messageTwo = ''
-        
-      )
+      
+      if (!this.edit) {
+        this.data.currentUser.comments.push(
+          {content:this.messageTwo},
+          // this.messageTwo = ''
+          
+        )
+     } else {
+       this.data.currentUser.comments[this.editIndex].content = this.messageTwo
+     this.edit = false
+     this.messageTwo = ''
+     }
 
       // this.data.currentUser.comments.push(this.messageTwo)
       
     },
     editComment(id) {
-      const commentToBeEdited = this.data.currentUser.comments.find((c) => c.id === id)
-     
+      const index = this.data.currentUser.comments.findIndex((c) => c.id === id)
+      const commentToBeEdited =this.data.currentUser.comments[index]
+     this.messageTwo = commentToBeEdited.content
+     this.editIndex = index
+     this.edit = true
 
-       
     },
+    
+  
    
+    
     removeGoal(idx) {
-      this.data.currentUser.comments.splice(idx, 1);
+      this.data.currentUser.comments.splice(idx,1);
       this.comment.splice(idx, 1);
     },
     // onSubmit(){
