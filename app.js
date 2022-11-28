@@ -6,7 +6,7 @@ const app = Vue.createApp({
       innerCount:0,
       showModal: false,
       awesome: true,
-      firstDisplay: false,
+      firstDisplay: true,
       message: "",
       messageTwo: "",
       commentTwo: [],
