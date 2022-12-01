@@ -18,7 +18,7 @@
 
 
 <!-- Pull dynamic content from the data.json file -->
-<div id="app">
+<div id="app" v-cloak>
 <!-- POPUP -->
   <div class="overlay" v-show="showModal"></div>
    <div class="modal" v-show="showModal">
@@ -65,67 +65,122 @@
 
 </div>
 
-<!-- this is the inner comment section -->
+<!-- this is the inner comment section  check this-->
+
   <div class="inner-comment">
    
-      <ul v-for="comment in data.currentUser.comments">
+      <ul v-for="comment in data.currentUser.comments" >
         <li>
           
           <div class="listItems-buttons">
            <div class="comment-image">
+            
             <div class="vote">
               <button @click="comment.score++">+ </button>
               <span> {{comment.score}}</span> 
-              <button @click="comment.score-- "> - </button>
+              <button v-if='comment.score> 0' @click="comment.score--"> - </button>
+              <button v-else>-</button>
+
+             
             </div>
-           <!-- <img :src="comment.user.image.png" width="20"> -->
+          
+          
             </div>
            
-          
-      
-          <div class="two-btn">
-          
-              <button @click="showModalCall"><img src='images/icon-delete.svg'>Delete</button>
-
-              <button @click="editComment(comment.id)"><img src='images/icon-edit.svg'>Edit</button>
-          </div>
-            
-          </div>
-          <p>{{ comment.content }}</p>
+            <div class="comment">
+              <div class="third-maxblagun innerThirdComment">
+              
+             <img v-if='comment.image>0':src="comment.image"width="20"><br> 
+              <img v-else="visible" src="images/avatars/image-maxblagun.webp" width="20">
+               <p>
+                  {{comment.username}}
+                  <span>{{comment.createdAt}}</span>
+                
+                  <div class="two-btn">
+                    <button @click="showModalCall"><img src='images/icon-delete.svg'/>Delete</button>
+                   <button @click="editComment(comment.id)"><img src='images/icon-edit.svg'/>Edit</button>
+                  </div>
+                  
+                </p>
+                
+            </div>
+        
          
-          <p>{{comment.createdAt}}</p>
-          
+          </div>
+           
+         
+          <p>{{ comment.content }}</p> 
           
         </li>
-         
+          
+        
       </ul> 
+
+
         <!-- this is end of  the inner comment section -->
-       
-   </div>
+   
+
+    <!-- last two comments -->
+    <!-- <div class="last">
+      <ul v-for="item in data.currentUser.comments[1].replies">
+        <li>
+          
+          <div class="listItems-buttons">
+           <div class="comment-image">
+            
+            <div class="vote">
+              <button @click="item.score++">+ </button>
+              <span> {{item.score}}</span> 
+              <button v-if="item.score>0"  @click="item.score--"> - </button>
+            </div>
+
+            </div>
+           
+            <div class="comment">
+              <div class="third-maxblagun innerThirdComment">
+                 <img :src="item.user.image.png" width="20"><br> 
+                <p>
+                  {{item.user.username}}
+                  <span>{{item.createdAt}}</span>
+                  <div class="two-btn">
+                    <button @click="showModalCall"><img src='images/icon-delete.svg'/>Delete</button>
+                   <button @click="editComment(comment.id)"><img src='images/icon-edit.svg'/>Edit</button>
+                  </div>
+                  
+                </p>
+                
+            </div>
+          </div>
+          <p>{{ item.content }}</p> 
+        </li>
+          
+        
+      </ul> 
+    </div> -->
+
+      
+      
 
    <!-- START OF FORM MESSAGE -->
 
-  <form class="wrap-comment-form  form-space" v-show="firstDisplay" @submit.prevent>
+  <form class="wrap-comment-form form-space" v-show="firstDisplay" @submit.prevent>
     <img src="images/avatars/image-maxblagun.webp">
-    <!-- <img :src="data.currentUser.comments.`"> -->
-
-    <div>
-      <textarea type="text" v-model="messageTwo" value="" placeholder="add a comment" rows="6"></textarea>
+   
     
+    <div>
+      <textarea type="text" v-model="messageTwo" onfocus="this." placeholder="add a comment" rows="6"></textarea>
     </div>
 
     <div>
       <button class="submitbutton" @click="addCommentTwo"  :disabled="!(messageTwo.length > 0)">SEND</button>
-      
-    </div>
+     </div>
 
     <!-- <p v-show="!awesome">
      closed</p>  -->
   </form>
   <!-- END OF FORM MESSAGE -->
 
-  
-
+</div>
 </div>
 
 </body>

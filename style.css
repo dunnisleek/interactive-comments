@@ -5,12 +5,22 @@
 *{
     margin: 0 auto;
     box-sizing: border-box;
+    
+}
+[v-cloak]{
+    display: none;
 }
 body{
     background:  hsl(228, 33%, 97%);
     font-family: 'Rubik', sans-serif;
     padding: 50px;
-   
+
+  
+}
+.last{
+    position: relative;
+    margin-left: 5px;
+    
 }
 
 .wrap-comment{
@@ -23,6 +33,7 @@ body{
     display: flex;
     justify-content: space-evenly;
     border-radius: 15px;
+    
 
 
 }
@@ -43,11 +54,14 @@ body{
      /* height: 15vh; */
 
 }
-.vote{ display: flex;
+.vote{ 
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 13vh;
     border-radius: 10px;
+    margin-left: -20px;
     background: #F5F6FB;
     margin-top: 20px;
 }
@@ -86,8 +100,8 @@ body{
     padding-left: 20px;
 }
 form {
-    position: relative;
-    text-align: left;
+    /* position: relative; */
+    /* text-align: left; */
     padding: 15px 0px;
     
 
@@ -100,10 +114,10 @@ form ul li{
 }
 form textarea{
     width:500px;
-   
+    resize:none;
     color:hsl(211, 10%, 45%);
     font-size: 17px;
-    padding-left: 20px;
+    padding-left: 10px;
     text-align: left;
     font-family: 'Rubik', sans-serif;
     /* margin: 0 auto; */
@@ -116,11 +130,13 @@ form ::placeholder{
      color:hsl(220, 1%, 54%);
 }
 form img{
+   
     width:4%;
     height:4vh;
     
 }
 .submitbutton{
+    margin:0;
     background: hsl(238, 40%, 52%);
     padding: 10px;
     border-radius: 5px;
@@ -134,6 +150,7 @@ form img{
 }
 .inner-comment{
     margin-left: -40px;
+    overflow: hidden;
 
 }
 
@@ -150,20 +167,25 @@ form img{
     margin-top: 50px;
     border-radius: 15px;
    list-style-type: none;
+   padding-top: 20px;
 
 }
 .inner-comment p{
-    padding: 0px 35px;
+    padding: 30px 49px;
     color:hsl(211, 10%, 45%);
     font-size: 17px;
     width: 650px;
 }
 .wrap-comment-form{
-    position: relative;
+    position: absolute;
     margin-top: 50px;
+    left: 0;
+    right: 0;
+  
+   
     background: #ffffff;
-    padding: 40px 20px;
-    width:800px;
+    padding: 40px 53px;
+    max-width:800px;
     display: flex;
     justify-content: space-evenly;
     border-radius: 15px;
@@ -234,25 +256,40 @@ form img{
 }
 
 
+
 .listItems-buttons .two-btn{
-    margin-right: 130px;
+    margin-left: 130px;
 }
 
 
 .listItems-buttons div.two-btn{
      margin: 0; 
+     display: flex;
+   
    
 } 
 .two-btn button{
     background: transparent;
     border: none;
-  
-
+    display: flex;
  
 }
 
 .third-maxblagun{
-    display: inline-flex;
+     display: inline-flex;
+     
+}
+.innerThirdComment{
+
+    display: flex;
+    max-width: 1200px;
+    padding-left: 20px;
+}
+.innerThirdComment{
+    margin-bottom:100px ;
+}
+.innerThirdComment .two-btn img{
+    margin-right: 7px;
 }
 
 .third-maxblagun p{
@@ -307,14 +344,34 @@ form img{
         
         border-radius: 15px;
     }
+    .innerThirdComment{
+
+        display: flex;
+        /* max-width: 1200px;
+        padding-left: 20px; */
+    }
+    .innerThirdComment{
+        margin-top:-20px ;
+    }
+    
     .wrap-comment-form{
         width:350px;
         display: block;
+       
     }
     .third-maxblagun p,
     .third-maxblagun img
     {
-       padding-top: 20px;
+       padding-top: 60px;
+       position: relative;
+       
+    }
+    .third-maxblagun p,
+    .third-maxblagun img:first-child
+    {
+       padding-top: 40px;
+       position: relative;
+      
     }
     .reply-btn button{
         font-size: 17px;
@@ -330,7 +387,8 @@ form img{
      
      }
      form img{
-        width:fit-content
+        width:fit-content;
+        object-fit:cover;
      }
      .vote-wrapper{
         display: inline;
@@ -342,22 +400,30 @@ form img{
      /* height: 15vh; */
     
     }
-    .vote{
+   .two-btn button {
+      height:0vh;
+      padding: 0px 0px;
+      /* position: absolute; */
+      
+      width:80%;
+      display:inline
+   }
+    
+    .vote{ 
+        position: absolute;
+        /* bottom: 0;
+        top:3; */
         display: flex;
         flex-direction: row;
-        border:none;
-        background: #F5F6FB;
-        padding: 6px 10px;
-        width:120px;
-        border-radius: 10px;
-       
-      
-        /* padding: 10px;
-        margin-bottom: 10px;
+        width:100px;
+        margin-top:-1px;
+        justify-content: center;
         align-items: center;
+        height: 4vh;
         border-radius: 10px;
-     background: #F5F6FB;
-     height: 15vh; */
+        margin-left: 20px;
+        background: #F5F6FB;
+        /* margin-top: 20px; */
     }
     .vote button{
         border: none;
@@ -367,13 +433,35 @@ form img{
         width:350px;
     }
     .inner-comment p{
-          width:350px;
-        /* padding: 0px 35px; */
+        padding: 60px 35px; 
+           width:350px;
+         /* padding-top: 30px;
+        /* padding: 0px 35px; 
         color:hsl(211, 10%, 45%);
         margin-top: 30px;
-       
+        */
     }
-   
+    
+    .listItems-buttons{
+       padding:0px;
+    
+    }
+    .listItems-buttons .two-btn {
+        position: absolute;
+        bottom:0;
+        left:0;
+        top:200px;
+        z-index: 3;
+        width:80%;
+        margin: 0;
+        display: flex;
+        justify-content: left;
+        padding: 0px;
+        align-items: flex-start;
+        /* width:100%;
+        height:100%;
+        display: block; */
+    }
   
     .wrap-comment:not(:first-child) {
         margin-left: 0px;
@@ -393,7 +481,7 @@ form img{
         position: relative;
         margin-top: 50px;
         background: #ffffff;
-        padding: 20px 20px;
+        padding: 20px 20px 30px 20px;
          height:auto;
         display: block;
         
@@ -410,25 +498,46 @@ form img{
      height: 15vh;
     
     }
+    .innerThirdComment{
+
+        display: flex;
+        /* max-width: 1200px;
+        padding-left: 20px; */
+    }
+    .innerThirdComment{
+        margin-top:-20px ;
+        padding-left: 0px;
+    }
+    
     .comment-image{
         display: flex;
         flex-direction: row;
     
     }
-    .vote{
+    .comment{
+        padding-left: 0px;
+    }
+
+    .vote{ 
+        position: absolute;
+        /* bottom: 0;
+        top:3; */
         display: flex;
         flex-direction: row;
-        border:none;
-        background: #F5F6FB;
-        padding: 20px 10px;
-        width:120px;
-      
-        /* padding: 10px;
-        margin-bottom: 10px;
+        width:100px;
+        margin-left: 3px;
+        margin-top:-1px;
+        justify-content: center;
+        height: 4vh;
+        /* width:100px;
+        margin-top:-1px;
+        justify-content: center;
         align-items: center;
+        height: 4vh;
         border-radius: 10px;
-     background: #F5F6FB;
-     height: 15vh; */
+        margin-left: 20px;
+        background: #F5F6FB; */
+        /* margin-top: 20px; */
     }
     .vote button{
         border: none;
@@ -442,6 +551,7 @@ form img{
     .wrap-comment-form{
         width:500px;
         display: block;
+        margin-right: 0px;
     }
     .inner-comment ul li{
         position: relative;
@@ -453,7 +563,7 @@ form img{
         background-color: white;
         margin-top: 50px;
         border-radius: 15px;
-        padding: 19px 36px;
+        padding: 0px;
         list-style-type: none;
     
     }
@@ -466,19 +576,54 @@ form img{
         width:400px;
         margin-top: 25px;
      }
-    .listItems-buttons{
+    /* .listItems-buttons{
         display: grid;
+        position: absolute;
         padding: 0px;
+    } */
+    .listItems-buttons .two-btn {
+        position: absolute;
+        bottom:0;
+        left:0;
+        /* top:0px; */
+        z-index: 3;
+        /* width:80%; */
+        margin: 0;
+        display: flex;
+        justify-content: left;
+        padding: 0px 0px 20px 40px;
+        align-items: flex-start;
+        /* width:100%;
+        height:100%;
+        display: block; */
     }
-    /* .wrap-comment:not(:first-child) {
-        margin-left: 0px;
-         */
-    
+    .listItems-buttons{
+        padding-bottom: 52px;
+    }
     .third-maxblagun p,
     .third-maxblagun img
     {
-       padding-top: 35px;
+       padding-top: 0px;
+       position: relative;
+       
     }
+    .third-maxblagun p,
+    .third-maxblagun img:first-child
+    {
+       padding-top: 30px;
+       position: relative;
+      
+    }
+    
+    /* .third-maxblagun p
+    
+    {
+       padding-top: 35px;
+    } */
+    .third-maxblagun img{
+        padding-top: 55px;
+    }
+    
     .reply-btn button{
         font-size: 17px;
         padding-top: 10px;
@@ -499,6 +644,20 @@ form img{
      .modal{
         height:29vh;
      }
+     .listItems-buttons div.two-btn {
+        position: absolute;
+        margin: 0;
+     
+     }
+     .two-btn button {
+    display:inline ; 
+    }
+    .third-maxblagun img {
+        position: relative ;
+    }
+    .wrap-comment-form {
+        margin-left: 120px;
+    }
 }
 
 
@@ -511,12 +670,13 @@ form img{
        margin-top: 50px;
        background: #ffffff;
        padding: 20px 20px;
-        height:44vh;
+        /* height:44vh; */
        display: block;
      border-radius: 15px;
    }
    .wrap-comment-form{
     width:700px;
+   
     display: block;
 }
 form textarea{
@@ -524,6 +684,16 @@ form textarea{
     outline: #6F72C1;
     
  
+ }
+ .maxblagun-content {
+    position: absolute;
+    margin-left: 37px;
+    padding-right: 50px;
+ }
+ form img{
+    width:fit-content;
+    object-fit: cover;
+   /* height: 4%; */
  }
 .inner-comment ul li{
     position: relative;
@@ -540,12 +710,13 @@ form textarea{
 
 }
 .vote{
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     border:none;
+    height: auto;
     background: #F5F6FB;
     padding:6px 10px;
-    width:120px;
+    width:120px; */
   
     /* padding: 10px;
     margin-bottom: 10px;
@@ -564,27 +735,39 @@ form textarea{
     display: grid;
     padding: 0px;
 }
+.listItems-buttons .two-btn {
+    position: absolute;
+    left: 80%;
+}
+
+
 .inner-comment p {
-    margin-top: 20px;
-    padding: 10px  50px 10px 0px;
+    
+    /* margin-top: 20px;
+    padding: 40px  50px 10px 0px; */
  }
 
 .vote-wrapper{
-    display: inline;
-    padding: 10px;
-    margin-left: 20px;
-    align-items: center;
+    /* display: inline; */
+    /* padding: 10px;
+    margin-left: 20px; */
+    align-items: left;
+    position: absolute;
     border-radius: 10px;
     background: #F5F6FB;
+    height: 13vh;
  
 
 }
 .reply-btn{
+    padding-top: 10px;
     margin: 20px 0px;
+    margin-top:50px;
+    margin-left:40px;
 }
 .third-maxblagun{
-  
-    padding: 30px 0px 0px 0px;
+/*   
+    padding: 30px 131px 0px 0px; */
  
   
 }
@@ -603,31 +786,43 @@ form textarea{
      border-radius: 15px;
    }
    .vote-wrapper{
-    display: inline;
+    /* display: inline;
     padding: 10px;
     margin-left: 20px;
-    align-items: center;
+    align-items: center; */
+    align-items: left;
+    position: absolute;
     border-radius: 10px;
+    background: #F5F6FB;
+    height: 13vh;
+    border-radius: 10px;
+    margin-top: 30px;
     background: #F5F6FB;
  
 
 }
 .vote{
-    display: flex;
-    flex-direction: row;
-    border:none;
+    position: relative;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* flex-flow: row; */
+    flex-wrap: wrap;
+    border: none;
+    height: auto;
+    margin-top: 27px;
     background: #F5F6FB;
-    padding:6px 10px;
-    width:120px;
-
+    /* padding: 6px 10px; */
+    /* width: 120px; */
+    /* margin-top: -70px; */
+   
 }
 .vote button{
     border: none;
     background: transparent;
 }
 .third-maxblagun{
-  
-    padding: 30px 0px 0px 0px;
+  position: relative;
+    /* padding: 30px 0px 0px 0px; */
  
   
 }
@@ -655,16 +850,38 @@ form textarea{
     display: block;
 }
 .listItems-buttons{
+   
     display: grid;
     padding: 0px;
 }
-.inner-comment p {
-    padding: 10px  50px 10px 0px;
-    margin-top:20px;
+.listItems-buttons div.two-btn 
+ {
+    position: relative;
+    margin-right: 200px;
+    bottom:0;
  }
  form img{
-    width:6%;
+ width:fit-content;
+    object-fit: cover;
+    
  }
+ .maxblagun-content {
+    position: absolute;
+    margin-left: 37px;
+    padding-right: 50px;
+ }
+ .third-maxblagun:first-child{
+    margin-left: 35px;
+ }
+ .third-maxblagun:only-child{
+    margin-left: 0px;
+ }
+ .reply-btn{
+    padding-top: 10px;
+    margin: 20px 0px;
+    margin-top:50px;
+    margin-left:40px;
+}
 
 }
 

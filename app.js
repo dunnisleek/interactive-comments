@@ -1,18 +1,21 @@
 const app = Vue.createApp({
   data() {
     return {
+     
       count: 12,
       counter: 5,
-      innerCount:0,
+      visible:true,
+      // innerCount:0,
       showModal: false,
       awesome: true,
-      firstDisplay: false,
+      firstDisplay: true,
       message: "",
       messageTwo: "",
       commentTwo: [],
       comment: [],
       editIndex:0,
       edit:false,
+      score:0,
  
       data: {
         currentUser: {
@@ -32,14 +35,16 @@ const app = Vue.createApp({
                 "Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You've nailed the design and the responsiveness at various breakpoints works really well.",
               createdAt: "1 month ago",
               score: 14,
-              user: {
-                      image: {
-                       png: "./images/avatars/image-amyrobson.png",
-                       webp: "./images/avatars/image-amyrobson.webp",
-                       },
+              username: "amyrobson",
+              image:"./images/avatars/image-amyrobson.png",
+              // user: {
+              //         image: {
+              //          png: "./images/avatars/image-amyrobson.png",
+              //          webp: "./images/avatars/image-amyrobson.webp",
+              //          },
 
-                      username: "amyrobson",
-              },
+              //         username: "amyrobson",
+              // },
 
               replies: [],
             },
@@ -50,16 +55,18 @@ const app = Vue.createApp({
                 "Woah, your project looks awesome! How long have you been coding for? I'm still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!",
               createdAt: "2 weeks ago",
               score: 5,
-              usernameTwo: "maxblagun",
-              user: {
-                image: {
-                  png: "./images/avatars/image-maxblagun.png",
-                  webp: "./images/avatars/image-maxblagun.webp",
-                },
-                username: "maxblagun",
-              },
+              username: "maxblagun",
+              image:"./images/avatars/image-maxblagun.png",
+              // user: {
+              //   image: {
+              //     png: "./images/avatars/image-maxblagun.png",
+              //     webp: "./images/avatars/image-maxblagun.webp",
+              //   },
+                
+              
 
               replies: [
+            
                 {
                   id: 3,
                   content:
@@ -72,30 +79,30 @@ const app = Vue.createApp({
                       png: "./images/avatars/image-ramsesmiron.png",
                       webp: "./images/avatars/image-ramsesmiron.webp",
                     },
-                    usernameThree: "ramsesmiron",
+                    username: "ramsesmiron",
                   },
                 },
-                {
-                  id: 4,
-                  content:
-                    "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
-                  createdAt: "2 days ago",
-                  score: 2,
-                  replyingTo: "ramsesmiron",
-                  user: {
-                    image: {
-                      png: "./images/avatars/image-juliusomo.png",
-                      webp: "./images/avatars/image-juliusomo.webp",
-                    },
-                    username: "juliusomo",
-                  },
-                },
+                // {
+                //   id: 4,
+                //   content:
+                //     "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
+                //   createdAt: "2 days ago",
+                //   score: 2,
+                //   replyingTo: "ramsesmiron",
+                //   user: {
+                //     image: {
+                //       png: "./images/avatars/image-juliusomo.png",
+                //       webp: "./images/avatars/image-juliusomo.webp",
+                //     },
+                //     username: "juliusomo",
+                //   },
+                // },
               ],
             },
           ],
         },
       },
-    };
+    }
   },
 
   methods: {
@@ -109,9 +116,7 @@ const app = Vue.createApp({
     innerCounter(){
       this.innerCount ++
     },
-    dec(){
-      this.innerCount --
-    },
+   
     decrementCount() {
       if(this.count > 0){
         this.count--;  
@@ -139,27 +144,37 @@ const app = Vue.createApp({
         
     },
     
-  
-    // addComment() {this.comment.push(this.message)
 
-    // },
+
+    addCommentTwo(){
+      this.data.currentUser.comments.push(
+       {content:this.messageTwo },
+       
+   
+       
+      )
+     
+    },
+    hideImage(){
+      this.data.currentUser.comments.image=!this.data.currentUser.comments.image
+    },
+  
+  
 
     addCommentTwo() {
       
       if (!this.edit) {
         this.data.currentUser.comments.push(
-          {content:this.messageTwo},
-          // this.messageTwo = ''
-          
-        )
+        {content:this.messageTwo},
+       
+          )
      } else {
-       this.data.currentUser.comments[this.editIndex].content = this.messageTwo
-     this.edit = false
-     this.messageTwo = ''
-     }
+      this.data.currentUser.comments[this.editIndex].content= this.messageTwo
+      this.data.currentUser.comments.user.username = this.messageTwo
+      this.edit = false
+      this.messageTwo = ''
 
-      // this.data.currentUser.comments.push(this.messageTwo)
-      
+     }
     },
     editComment(id) {
       const index = this.data.currentUser.comments.findIndex((c) => c.id === id)
@@ -170,13 +185,17 @@ const app = Vue.createApp({
 
     },
     
-  
-   
+  //  pop() is use to remove last element from an array
     
     removeGoal(idx) {
-      this.data.currentUser.comments.splice(idx,1);
-      this.comment.splice(idx, 1);
+      this.data.currentUser.comments.pop(idx,1)
+      this.data.currentUser.comments[1].replies.pop(idx,1);
+      this.item.pop(idx, 1);
+      this.comment.pop(idx, 1);
+    
     },
+   
+
     // onSubmit(){
     //   if(this.message === '' || this.commentTwo === ''){
     //       alert('Review is incomplete, please fill the inputs')
@@ -185,7 +204,7 @@ const app = Vue.createApp({
     // }
 
    
-  },
+  }
   
 });
 
