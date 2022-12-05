@@ -59,7 +59,8 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 13vh;
+    padding: 10px 0px;
+    /* height: 13vh; */
     border-radius: 10px;
     margin-left: -20px;
     background: #F5F6FB;
@@ -130,9 +131,11 @@ form ::placeholder{
      color:hsl(220, 1%, 54%);
 }
 form img{
-   
-    width:4%;
-    height:4vh;
+  
+    margin-right: 35px;
+    height: 4vh;
+    object-fit: cover;
+    /* width: fit-content; */
     
 }
 .submitbutton{
@@ -315,6 +318,9 @@ form img{
     font-size: 17px;
     line-height:22px ;
 } 
+.username{
+    margin-bottom: 6px;
+}
 
 
 

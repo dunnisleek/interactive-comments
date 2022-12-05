@@ -15,7 +15,7 @@ const app = Vue.createApp({
       comment: [],
       editIndex:0,
       edit:false,
-      score:0,
+      yourName:'',
  
       data: {
         currentUser: {
@@ -36,15 +36,15 @@ const app = Vue.createApp({
               createdAt: "1 month ago",
               score: 14,
               username: "amyrobson",
-              image:"./images/avatars/image-amyrobson.png",
-              // user: {
-              //         image: {
-              //          png: "./images/avatars/image-amyrobson.png",
-              //          webp: "./images/avatars/image-amyrobson.webp",
-              //          },
+              // image:"./images/avatars/image-amyrobson.png",
+              user: {
+                      image: {
+                       png: "./images/avatars/image-amyrobson.png",
+                       webp: "./images/avatars/image-amyrobson.webp",
+                       },
 
-              //         username: "amyrobson",
-              // },
+                      username: "amyrobson",
+              },
 
               replies: [],
             },
@@ -56,13 +56,13 @@ const app = Vue.createApp({
               createdAt: "2 weeks ago",
               score: 5,
               username: "maxblagun",
-              image:"./images/avatars/image-maxblagun.png",
-              // user: {
-              //   image: {
-              //     png: "./images/avatars/image-maxblagun.png",
-              //     webp: "./images/avatars/image-maxblagun.webp",
-              //   },
-                
+              // image:"./images/avatars/image-maxblagun.png",
+              user: {
+                image: {
+                  png: "./images/avatars/image-maxblagun.png",
+                  webp: "./images/avatars/image-maxblagun.webp",
+                },
+              },
               
 
               replies: [
@@ -72,7 +72,7 @@ const app = Vue.createApp({
                   content:
                     "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
                   createdAt: "1 week ago",
-                  score: 4,
+                  score: 0,
                   replyingTo: "maxblagun",
                   user: {
                     image: {
@@ -162,24 +162,46 @@ const app = Vue.createApp({
   
 
     addCommentTwo() {
-      
+      // this.data.currentUser.comments.lenght + 1
       if (!this.edit) {
-        this.data.currentUser.comments.push(
-        {content:this.messageTwo},
-       
-          )
+    const newComment=
+          {
+            id: 1,
+            content: this.messageTwo,
+            createdAt: "3 weeks",
+            score: 0,
+            username: this.yourName,
+            
+           
+            user: {
+                    image: {
+                     png: "./images/avatars/image-maxblagun.png",
+                     webp: "./images/avatars/image-amyrobson.webp",
+                     },
+
+                    username: "amyrobson",
+            },
+
+            replies: [],
+      }
+         this.data.currentUser.comments.push( newComment)
+         this.messageTwo = ''
+         this.yourName=''
+                        
      } else {
+      
       this.data.currentUser.comments[this.editIndex].content= this.messageTwo
-      this.data.currentUser.comments.user.username = this.messageTwo
+      // this.data.currentUser.comments.user.username = this.messageTwo
       this.edit = false
       this.messageTwo = ''
 
      }
     },
+    
     editComment(id) {
       const index = this.data.currentUser.comments.findIndex((c) => c.id === id)
       const commentToBeEdited =this.data.currentUser.comments[index]
-     this.messageTwo = commentToBeEdited.content
+      this.messageTwo = commentToBeEdited.content
      this.editIndex = index
      this.edit = true
 
@@ -220,3 +242,49 @@ app.mount("#app");
 
 // });
 // app2.mount('#formcomment')
+
+
+
+// addCommentTwo() {
+  // this.data.currentUser.comments.lenght + 1
+//   if (!this.edit) {
+//     const newComment=
+//       {
+//         id: 1,
+//         content:
+//           this.messageTwo,
+//         createdAt: "3 weeks",
+//         score: 0,
+//         username: this.yourName,
+       
+//         user: {
+//                 image: {
+//                  png: "./images/avatars/image-amyrobson.png",
+//                  webp: "./images/avatars/image-amyrobson.webp",
+//                  },
+
+//                 username: "amyrobson",
+//         },
+
+//         replies: [],
+//   }
+    
+//     this.data.currentUser.comments.push(
+//                   newComment
+//                   )
+//  } else {
+//   this.data.currentUser.comments[this.editIndex].content= this.messageTwo
+//   this.data.currentUser.comments.user.username = this.messageTwo
+//   this.edit = false
+//   this.messageTwo = ''
+
+//  }
+// }
+// editComment(id) {
+//   const index = this.data.currentUser.comments.findIndex((c) => c.id === id)
+//   const commentToBeEdited =this.data.currentUser.comments[index]
+//  this.messageTwo = commentToBeEdited.content
+//  this.editIndex = index
+//  this.edit = true
+
+// }

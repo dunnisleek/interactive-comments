@@ -69,7 +69,7 @@
 
   <div class="inner-comment">
    
-      <ul v-for="comment in data.currentUser.comments" >
+      <ul v-for="comment in data.currentUser.comments" :key="comment.id" >
         <li>
           
           <div class="listItems-buttons">
@@ -90,8 +90,8 @@
             <div class="comment">
               <div class="third-maxblagun innerThirdComment">
               
-             <img v-if='comment.image>0':src="comment.image"width="20"><br> 
-              <img v-else="visible" src="images/avatars/image-maxblagun.webp" width="20">
+             <img :src="comment.user.image.png" width="20"><br> 
+              <!-- <img v-else="visible" src="images/avatars/image-maxblagun.webp" width="20"> -->
                <p>
                   {{comment.username}}
                   <span>{{comment.createdAt}}</span>
@@ -130,7 +130,8 @@
    
     
     <div>
-      <textarea type="text" v-model="messageTwo" onfocus="this." placeholder="add a comment" rows="6"></textarea>
+      <input type="text" v-model="yourName" placeholder="username" class="username">
+      <textarea type="text" v-model="messageTwo"  placeholder="add a comment" rows="6"></textarea>
     </div>
 
     <div>
