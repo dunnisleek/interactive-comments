@@ -16,6 +16,7 @@ const app = Vue.createApp({
       editIndex:0,
       edit:false,
       yourName:'',
+      uniqueId:4,
  
       data: {
         currentUser: {
@@ -109,6 +110,7 @@ const app = Vue.createApp({
     showComment() {
       this.awesome = !this.awesome;
     },
+   
     incrementCount() {
       this.count++;
       
@@ -162,11 +164,15 @@ const app = Vue.createApp({
   
 
     addCommentTwo() {
-      // this.data.currentUser.comments.lenght + 1
+      // this.data.currentUser.comments.length + 1
       if (!this.edit) {
-    const newComment=
+        const unique = { uniqueIden(){
+          this.uniqueId++
+        }
+      }
+      const newComment=
           {
-            id: 1,
+            id: unique,
             content: this.messageTwo,
             createdAt: "3 weeks",
             score: 0,
@@ -231,3 +237,60 @@ const app = Vue.createApp({
 });
 
 app.mount("#app");
+
+// const app2 = Vue.createApp({
+//     data(){
+//       return{
+//        counter:0
+
+//     }
+//     },
+
+// });
+// app2.mount('#formcomment')
+
+
+
+// addCommentTwo() {
+  // this.data.currentUser.comments.lenght + 1
+//   if (!this.edit) {
+//     const newComment=
+//       {
+//         id: 1,
+//         content:
+//           this.messageTwo,
+//         createdAt: "3 weeks",
+//         score: 0,
+//         username: this.yourName,
+       
+//         user: {
+//                 image: {
+//                  png: "./images/avatars/image-amyrobson.png",
+//                  webp: "./images/avatars/image-amyrobson.webp",
+//                  },
+
+//                 username: "amyrobson",
+//         },
+
+//         replies: [],
+//   }
+    
+//     this.data.currentUser.comments.push(
+//                   newComment
+//                   )
+//  } else {
+//   this.data.currentUser.comments[this.editIndex].content= this.messageTwo
+//   this.data.currentUser.comments.user.username = this.messageTwo
+//   this.edit = false
+//   this.messageTwo = ''
+
+//  }
+// }
+// editComment(id) {
+//   const index = this.data.currentUser.comments.findIndex((c) => c.id === id)
+//   const commentToBeEdited =this.data.currentUser.comments[index]
+//  this.messageTwo = commentToBeEdited.content
+//  this.editIndex = index
+//  this.edit = true
+
+// }
